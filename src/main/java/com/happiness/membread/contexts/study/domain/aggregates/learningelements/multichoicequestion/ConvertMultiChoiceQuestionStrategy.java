@@ -1,7 +1,7 @@
-package com.happiness.membread.contexts.study.domain.aggregates.quizlesson.learnings.multichoicequestion;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.multichoicequestion;
 
 import com.happiness.membread.contexts.study.database.entities.LearningAttribute;
-import com.happiness.membread.contexts.study.domain.common.IConvertLearningStrategy;
+import com.happiness.membread.contexts.study.domain.aggregates.learningelements.IConvertLearningStrategy;
 
 import java.util.HashMap;
 import java.util.List;

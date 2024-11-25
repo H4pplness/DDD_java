@@ -1,4 +1,4 @@
-package com.happiness.membread.contexts.study.domain.common;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements;
 
 import com.happiness.membread.contexts.study.database.entities.LearningAttribute;
 

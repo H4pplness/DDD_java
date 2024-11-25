@@ -1,6 +1,6 @@
-package com.happiness.membread.contexts.study.domain.aggregates.vocabularylesson.learnings;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.vocabulary;
 
-import com.happiness.membread.contexts.study.domain.common.ILearningService;
+import com.happiness.membread.contexts.study.domain.aggregates.learningelements.ILearningService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

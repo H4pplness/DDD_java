@@ -1,6 +1,6 @@
-package com.happiness.membread.contexts.study.domain.aggregates.vocabularylesson.learnings;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.vocabulary;
 
-import com.happiness.membread.contexts.study.domain.common.ILearning;
+import com.happiness.membread.contexts.study.domain.aggregates.learningelements.ILearning;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

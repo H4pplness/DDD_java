@@ -4,8 +4,6 @@ import com.happiness.membread.common.ApiResponse;
 import com.happiness.membread.contexts.study.database.entities.Clazz;
 import com.happiness.membread.contexts.study.domain.dtos.CreateClazzDto;
 import com.happiness.membread.contexts.study.domain.services.ClazzService;
-import com.happiness.membread.contexts.study.domain.services.ILessonService;
-import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClazzController {
-    @Autowired
-    private ILessonService lessonService;
 
     @Autowired
     private ClazzService clazzService;

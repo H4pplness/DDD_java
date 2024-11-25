@@ -1,7 +1,7 @@
-package com.happiness.membread.contexts.study.domain.aggregates.vocabularylesson.learnings;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.vocabulary;
 
 import com.happiness.membread.contexts.study.database.entities.LearningAttribute;
-import com.happiness.membread.contexts.study.domain.common.IConvertLearningStrategy;
+import com.happiness.membread.contexts.study.domain.aggregates.learningelements.IConvertLearningStrategy;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

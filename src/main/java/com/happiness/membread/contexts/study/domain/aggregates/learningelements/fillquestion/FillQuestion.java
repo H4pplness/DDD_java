@@ -1,6 +1,7 @@
-package com.happiness.membread.contexts.study.domain.aggregates.quizlesson.learnings.fillquestion;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.fillquestion;
 
-import com.happiness.membread.contexts.study.domain.aggregates.quizlesson.learnings.IQuestion;
+
+import com.happiness.membread.contexts.study.domain.aggregates.learningelements.IQuestion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

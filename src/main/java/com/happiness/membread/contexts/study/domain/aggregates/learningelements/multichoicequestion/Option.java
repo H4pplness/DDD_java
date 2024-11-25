@@ -1,4 +1,4 @@
-package com.happiness.membread.contexts.study.domain.aggregates.quizlesson.learnings.multichoicequestion;
+package com.happiness.membread.contexts.study.domain.aggregates.learningelements.multichoicequestion;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
