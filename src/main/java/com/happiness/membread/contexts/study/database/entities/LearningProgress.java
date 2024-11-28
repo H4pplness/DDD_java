@@ -3,20 +3,18 @@ package com.happiness.membread.contexts.study.database.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@IdClass(LearningProgressKey.class)
 public class LearningProgress {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-
     @Column(name = "learning_id")
     private String learningId;
 
+    @Id
     @Column(name = "user_id")
     private String userId;
 
@@ -24,6 +22,6 @@ public class LearningProgress {
     @Column(name = "progress")
     private int progress;
 
-    @Column(name = "next_time")
-    private LocalDateTime nextTime;
+    @Column(name = "last_time")
+    private LocalDateTime lastTime;
 }

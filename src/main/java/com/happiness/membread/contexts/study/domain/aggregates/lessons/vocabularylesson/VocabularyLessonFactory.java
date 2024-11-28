@@ -35,6 +35,7 @@ public class VocabularyLessonFactory implements ILessonFactory<Vocabulary,Vocabu
             learning.setType("vocabulary");
             learningRepository.save(learning);
 
+            vocabulary.setId(learning.getId());
             List<LearningAttribute> attributes = learningConversion.convertToLearningAttributes(VocabularyConversion.class.getName(),vocabulary);
             learningAttributeRepository.saveAll(attributes);
         }

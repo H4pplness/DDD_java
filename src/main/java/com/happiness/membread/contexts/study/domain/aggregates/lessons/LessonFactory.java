@@ -1,13 +1,10 @@
 package com.happiness.membread.contexts.study.domain.aggregates.lessons;
 
-
 import com.happiness.membread.contexts.study.database.repositories.LessonRepository;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.Learning;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.vocabularylesson.VocabularyLessonFactory;
-import javassist.NotFoundException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;

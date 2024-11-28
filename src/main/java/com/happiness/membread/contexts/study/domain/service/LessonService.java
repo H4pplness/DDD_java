@@ -44,4 +44,12 @@ public class LessonService {
     public List<Learning> editLearning(String id,List<Learning> lesson){
         return lessonFactory.editLearning(id,lesson);
     }
+
+    public com.happiness.membread.contexts.study.domain.aggregates.lessons.Lesson getLesson(String id){
+        return lessonFactory.getLesson(id);
+    }
+
+    public List<Learning> deleteLearning(String id,List<Learning> deleteElements){
+        return null;
+    }
 }

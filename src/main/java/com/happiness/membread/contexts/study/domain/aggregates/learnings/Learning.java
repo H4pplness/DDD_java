@@ -12,7 +12,7 @@ import lombok.Data;
         property = "type"
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Vocabulary.class, name = "vocabulary")
+        @JsonSubTypes.Type(value = Vocabulary.class, name = "vocabulary"),
 })
 public abstract class Learning {
     String id;

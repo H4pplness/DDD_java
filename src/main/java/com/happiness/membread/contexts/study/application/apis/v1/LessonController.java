@@ -2,19 +2,18 @@ package com.happiness.membread.contexts.study.application.apis.v1;
 
 import com.happiness.membread.common.ApiResponse;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.Learning;
+import com.happiness.membread.contexts.study.domain.aggregates.lessons.Lesson;
 import com.happiness.membread.contexts.study.domain.dtos.AddLearningToNewLessonRequestDto;
 import com.happiness.membread.contexts.study.domain.dtos.CreateLessonRequestDto;
 import com.happiness.membread.contexts.study.domain.dtos.LessonSummaryResponseDto;
 import com.happiness.membread.contexts.study.domain.service.LessonService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +36,10 @@ public class LessonController {
 
         return ApiResponse.<List<Learning>>builder().result(list).build();
     }
+
+    @GetMapping("")
+    public ApiResponse<Lesson> getLesson(@PathParam("id") String id){
+        return ApiResponse.<Lesson>builder().result(lessonService.getLesson(id)).build();
+    }
+
 }
