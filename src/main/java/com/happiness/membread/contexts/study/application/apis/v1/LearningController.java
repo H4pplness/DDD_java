@@ -1,6 +1,7 @@
 package com.happiness.membread.contexts.study.application.apis.v1;
 
 import com.happiness.membread.common.ApiResponse;
+import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.LessonProgress;
 import com.happiness.membread.contexts.study.domain.dtos.UpdateLessonProgressRequestDto;
 import com.happiness.membread.contexts.study.domain.service.LearningService;
@@ -32,5 +33,11 @@ public class LearningController {
         learningService.updateLessonProgress("1111",progressRequestDto);
 
         return ApiResponse.<String>builder().result("Updated successfully!").build();
+    }
+
+    @GetMapping("/study")
+    public ApiResponse<LearningLesson> studyLesson(@PathParam("lessonId") String lessonId,@PathParam("method") String method){
+        String userId = "1111";
+        return ApiResponse.<LearningLesson>builder().result(learningService.studyLesson(lessonId,userId,method)).build();
     }
 }

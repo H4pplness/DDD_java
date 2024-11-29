@@ -1,5 +1,7 @@
 package com.happiness.membread.contexts.study.domain.service;
 
+import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
+import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLessonService;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.ILessonProgress;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.LessonProgress;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.UserLearningProgress;
@@ -20,6 +22,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class LearningService {
     ILessonProgress lessonProgress;
+
+    LearningLessonService learningLessonService;
 
     public LessonProgress getLessonProgress(String lessonId,String userId){
         return lessonProgress.getProgress(userId,lessonId);
@@ -47,6 +51,10 @@ public class LearningService {
         lessonProgressArg.setUserProgress(userLearningProgresses);
 
         lessonProgress.updateProgress(lessonProgressArg);
+    }
+
+    public LearningLesson studyLesson(String lessonId,String userId,String method){
+        return learningLessonService.getLearningLesson(lessonId,userId,method);
     }
 
 }
