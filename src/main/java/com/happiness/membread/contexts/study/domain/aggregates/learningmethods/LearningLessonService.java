@@ -19,7 +19,8 @@ public class LearningLessonService {
     }
 
     public LearningLesson getLearningLesson(String lessonId,String userId,String method){
-        ILearningMethod learningMethod = learningMethodHashMap.get(method);
+        String key = LearningMethodType.getStrategyFromMethod(method);
+        ILearningMethod learningMethod = learningMethodHashMap.get(key);
         if (learningMethod == null)throw new IllegalArgumentException("Method not found !");
 
         return learningMethod.learn(lessonId,userId);
