@@ -1,15 +1,13 @@
 package com.happiness.membread.contexts.study.domain.aggregates.learningmethods;
 
+import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.questionmethod.QuestionMethod;
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod.SpacedRepetitionMethod;
 import lombok.Getter;
 
 @Getter
 public enum LearningMethodType {
     VOCABULARY_SPACED_REPETITION("VOCABULARY_1", SpacedRepetitionMethod.class.getSimpleName()),
-    VOCABULARY_REVIEW("VOCABULARY_2","")
-
-
-
+    QUESTION_REVIEW("QUESTION_1", QuestionMethod.class.getSimpleName())
     ;
     private final String method;
     private final String strategy;

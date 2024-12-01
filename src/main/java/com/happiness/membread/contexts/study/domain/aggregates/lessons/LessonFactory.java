@@ -2,6 +2,7 @@ package com.happiness.membread.contexts.study.domain.aggregates.lessons;
 
 import com.happiness.membread.contexts.study.database.repositories.LessonRepository;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.Learning;
+import com.happiness.membread.contexts.study.domain.aggregates.lessons.question.QuestionLessonFactory;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.vocabularylesson.VocabularyLessonFactory;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -48,7 +49,7 @@ public class LessonFactory {
         String strategy = switch (type) {
             case "vocabulary" -> VocabularyLessonFactory.class.getSimpleName();
             case "video" -> "VideoLessonFactory";
-            case "question" -> "QuestionLessonFactory";
+            case "question" -> QuestionLessonFactory.class.getSimpleName();
             default -> "";
         };
 

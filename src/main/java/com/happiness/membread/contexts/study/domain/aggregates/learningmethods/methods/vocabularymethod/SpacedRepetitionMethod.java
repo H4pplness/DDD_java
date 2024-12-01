@@ -1,6 +1,7 @@
 package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod;
 
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.ILearningMethod;
+import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.vocabulary.Vocabulary;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.LessonFactory;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.vocabularylesson.VocabularyLesson;
@@ -62,5 +63,10 @@ public class SpacedRepetitionMethod implements ILearningMethod {
         learningLesson.setId(lessonId);
 
         return learningLesson;
+    }
+
+    @Override
+    public LearningLesson review(String lessonId, String userId, List<String> listLearning) {
+        return null;
     }
 }
