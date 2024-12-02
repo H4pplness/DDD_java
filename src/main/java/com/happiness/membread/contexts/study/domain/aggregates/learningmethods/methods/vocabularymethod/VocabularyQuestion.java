@@ -1,17 +1,19 @@
 package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod;
 
-import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.vocabulary.Vocabulary;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class VocabularyLearningLesson extends LearningLesson {
-    List<VocabularyQuestion> vocabularyQuestions;
+public class VocabularyQuestion {
+    Vocabulary vocabulary;
+    List<Vocabulary> choices;
 }

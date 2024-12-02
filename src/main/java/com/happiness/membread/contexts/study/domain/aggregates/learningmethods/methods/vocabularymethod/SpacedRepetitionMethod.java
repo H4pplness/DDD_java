@@ -58,8 +58,36 @@ public class SpacedRepetitionMethod implements ILearningMethod {
                 .map(e->e.vocabulary).toList()
                 .subList(0,Math.min(20,sortedList.size()));
 
+        List<VocabularyQuestion> vocabularyQuestionList = new ArrayList<>();
+
+        List<Vocabulary> lessonVocabs = lesson.getListVocabulary();
+        int length = lessonVocabs.size();
+        Random random = new Random();
+        for (Vocabulary vocabulary : listVocabulary){
+            Set<Vocabulary> choices = new HashSet<>();
+            choices.add(vocabulary);
+
+            for (int i=0;i<3;i++){
+                while (true){
+                    int randomInt = random.nextInt(length);
+                    Vocabulary randomVocab = lessonVocabs.get(randomInt);
+                    if (!choices.contains(randomVocab)){
+                        choices.add(randomVocab);
+                        break;
+                    }
+                }
+            }
+            VocabularyQuestion question = new VocabularyQuestion();
+            question.setVocabulary(vocabulary);
+            List<Vocabulary> listQuestion = new ArrayList<>(choices.stream().toList());
+            Collections.shuffle(listQuestion);
+            question.setChoices(listQuestion);
+
+            vocabularyQuestionList.add(question);
+        }
+
         VocabularyLearningLesson learningLesson = new VocabularyLearningLesson();
-        learningLesson.setVocabularyList(listVocabulary);
+        learningLesson.setVocabularyQuestions(vocabularyQuestionList);
         learningLesson.setId(lessonId);
 
         return learningLesson;
@@ -67,6 +95,15 @@ public class SpacedRepetitionMethod implements ILearningMethod {
 
     @Override
     public LearningLesson review(String lessonId, String userId, List<String> listLearning) {
+        VocabularyLesson lesson = (VocabularyLesson) lessonFactory.getLesson(lessonId);
+
+        
+
+        VocabularyLearningLesson learningLesson = new VocabularyLearningLesson();
+        learningLesson.setId(lessonId);
+
+
+
         return null;
     }
 }
