@@ -1,6 +1,7 @@
-package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod;
+package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.questionmethod;
 
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
+import com.happiness.membread.contexts.study.domain.aggregates.learnings.question.Question;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class VocabularyLearningLesson extends LearningLesson {
-    List<VocabularyQuestion> vocabularyQuestions;
+public class QuestionLearningLesson extends LearningLesson {
+    List<Question> listQuestion;
 }

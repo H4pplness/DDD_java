@@ -1,7 +1,6 @@
 package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod;
 
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.ILearningMethod;
-import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.LearningLesson;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.vocabulary.Vocabulary;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.LessonFactory;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.vocabularylesson.VocabularyLesson;
@@ -10,6 +9,7 @@ import com.happiness.membread.contexts.study.domain.aggregates.userprogress.Less
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.UserLearningProgress;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ import java.util.*;
 
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SpacedRepetitionMethod implements ILearningMethod {
     LessonFactory lessonFactory;
 
@@ -91,19 +91,5 @@ public class SpacedRepetitionMethod implements ILearningMethod {
         learningLesson.setId(lessonId);
 
         return learningLesson;
-    }
-
-    @Override
-    public LearningLesson review(String lessonId, String userId, List<String> listLearning) {
-        VocabularyLesson lesson = (VocabularyLesson) lessonFactory.getLesson(lessonId);
-
-        
-
-        VocabularyLearningLesson learningLesson = new VocabularyLearningLesson();
-        learningLesson.setId(lessonId);
-
-
-
-        return null;
     }
 }

@@ -31,5 +31,15 @@ public class GlobalException {
                         .build());
     }
 
+    @ExceptionHandler(value = IllegalArgumentException.class)
+    ResponseEntity<ApiResponse> handleIllegalArgumentException(IllegalArgumentException e){
+        return ResponseEntity.badRequest()
+                .body(ApiResponse
+                        .builder()
+                        .code(3001)
+                        .message(e.getMessage())
+                        .build());
+    }
+
 
 }

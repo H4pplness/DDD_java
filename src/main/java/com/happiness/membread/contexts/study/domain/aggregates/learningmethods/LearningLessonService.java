@@ -11,9 +11,10 @@ public class LearningLessonService {
     HashMap<String,ILearningMethod> learningMethodHashMap;
 
     @Autowired
-    LearningLessonService(List<ILearningMethod> methods){
+    LearningLessonService(List<ILearningMethod> learningMethods){
         learningMethodHashMap = new HashMap<>();
-        for (ILearningMethod method : methods){
+
+        for (ILearningMethod method : learningMethods){
             learningMethodHashMap.put(method.getClass().getSimpleName(),method);
         }
     }
