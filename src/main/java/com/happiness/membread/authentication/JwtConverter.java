@@ -27,7 +27,7 @@ public class JwtConverter implements Converter<Jwt, AbstractAuthenticationToken>
                 getGrantedAuthorities(jwt).stream()
         ).collect(Collectors.toSet());
 
-        return new JwtAuthenticationToken(jwt,authorities,jwt.getClaim("preferred_username"));
+        return new JwtAuthenticationToken(jwt,authorities,jwt.getClaim("sub"));
     }
 
     private Collection<? extends GrantedAuthority> getGrantedAuthorities(Jwt jwt){

@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -19,12 +21,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     JwtConverter jwtConverter;
 
+    String[] nonRequiredTokenMethod = {"api/v1/auth/login","api/v1/auth/sign-in"};
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((auth)->
                 auth
-                        .requestMatchers(HttpMethod.GET,"api/test").permitAll()
-                        .requestMatchers(HttpMethod.GET,"api/**").hasRole("user")
+                        .requestMatchers(nonRequiredTokenMethod).permitAll()
+                        .requestMatchers(HttpMethod.GET,"api/v1/**").hasRole("user")
                         .anyRequest().authenticated()
                 );
 
@@ -36,6 +40,5 @@ public class SecurityConfig {
         http.oauth2ResourceServer(oauth2 -> oauth2.jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtConverter)));
 
         return http.build();
-
     }
 }

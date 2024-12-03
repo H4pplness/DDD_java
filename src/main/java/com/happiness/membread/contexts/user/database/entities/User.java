@@ -15,7 +15,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
     @Column(name = "first_name")
@@ -26,7 +25,4 @@ public class User{
 
     @Column(name = "email",unique = true)
     String email;
-
-    @Column()
-    String password;
 }
