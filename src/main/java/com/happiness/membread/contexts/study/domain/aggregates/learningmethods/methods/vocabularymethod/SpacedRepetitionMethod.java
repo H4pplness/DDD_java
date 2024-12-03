@@ -2,13 +2,13 @@ package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.
 
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.ILearningMethod;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.vocabulary.Vocabulary;
+import com.happiness.membread.contexts.study.domain.aggregates.lessons.Lesson;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.LessonFactory;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.vocabularylesson.VocabularyLesson;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.LessonProgress;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.LessonProgressService;
 import com.happiness.membread.contexts.study.domain.aggregates.userprogress.UserLearningProgress;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
@@ -32,7 +32,11 @@ public class SpacedRepetitionMethod implements ILearningMethod {
 
     @Override
     public VocabularyLearningLesson learn(String lessonId, String userId) {
-        VocabularyLesson lesson = (VocabularyLesson) lessonFactory.getLesson(lessonId);
+        Lesson gotLesson = lessonFactory.getLesson(lessonId);
+        if (!(gotLesson instanceof VocabularyLesson lesson)){
+            throw new IllegalArgumentException("Invalid method !");
+        }
+
         LessonProgress lessonProgress = lessonProgressService.getProgress(userId,lessonId);
 
         HashMap<String,VocabularyLearningProgress> map = new HashMap<>();
