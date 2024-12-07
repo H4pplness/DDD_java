@@ -39,4 +39,15 @@ public class UserService {
         User user = userOptional.get();
         return new UserInfo(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail());
     }
+
+    public UserInfo updateUserInfo(String id,UserInfo userInfo){
+        User user = userRepository.getReferenceById(id);
+        if(user.getFirstName() != null) user.setFirstName(user.getFirstName());
+        if(user.getLastName() != null) user.setLastName(user.getLastName());
+        if(user.getEmail()!=null) user.setEmail(user.getEmail());
+
+        userRepository.save(user);
+
+        return userInfo;
+    }
 }

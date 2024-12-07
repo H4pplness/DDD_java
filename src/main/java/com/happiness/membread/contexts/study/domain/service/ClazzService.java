@@ -23,12 +23,11 @@ import java.util.List;
 public class ClazzService {
     ClazzRepository clazzRepository;
 
-    LessonRepository lessonRepository;
-
     public Clazz createClazz(@RequestBody CreateClazzRequestDto createClazz){
         Clazz clazz = new Clazz();
-        clazz.setName(createClazz.getName());
+        clazz.setTitle(createClazz.getName());
         clazz.setDescription(createClazz.getDescription());
+        clazz.setCourseId(createClazz.getCourseId());
 
         return clazzRepository.save(clazz);
     }

@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,19 +15,11 @@ public class Clazz {
     private String id;
 
     @Column()
-    private String name;
+    private String title;
 
     @Column()
     private String description;
 
-    @Column()
-    private String authorId;
-
-    @ManyToMany()
-    @JoinTable(
-            name = "clazz_category",
-            joinColumns = @JoinColumn(name = "category_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "clazz_id",referencedColumnName = "id")
-    )
-    private Set<Category> categories = new HashSet<>();
+    @Column(name = "course_id")
+    private String courseId;
 }

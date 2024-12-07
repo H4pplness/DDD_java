@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -22,7 +19,4 @@ public class Category {
 
     @Column()
     private String description;
-
-    @ManyToMany(mappedBy = "categories")
-    private Set<Clazz> clazzes = new HashSet<>();
 }
