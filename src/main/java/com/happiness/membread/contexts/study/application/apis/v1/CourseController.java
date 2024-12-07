@@ -45,4 +45,9 @@ public class CourseController {
     public ApiResponse<Object> getCourseByCategory(@PathParam("categoryId") Integer categoryId){
         return ApiResponse.builder().result(courseService.getCourseByCategory(categoryId)).build();
     }
+
+    @GetMapping("author")
+    public ApiResponse<Object> getCourseByAuthor(@PathParam("id") String id){
+        return ApiResponse.builder().result(courseService.getCourseByAuthor(id)).build();
+    }
 }

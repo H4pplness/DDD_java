@@ -35,17 +35,6 @@ public class ClazzController {
 
     ClazzService clazzService;
 
-//    @GetMapping("")
-//    public ApiResponse<Vocabulary> getVocabulary(@Param("id") String id){
-//        Learning learning = learningRepository.findById(id).orElse(null);
-//
-//        List<LearningAttribute> attributes = learningAttributeRepository.getLearningAttributesByLearningId(id);
-//
-//        Vocabulary vocabulary =(Vocabulary) learningConversion.convertToLearning(VocabularyConversion.class.getName(),attributes);
-//
-//        return ApiResponse.<Vocabulary>builder().result(vocabulary).build();
-//    }
-
     @PostMapping("/vocab")
     public ApiResponse<Vocabulary> createVocabulary(@RequestBody Vocabulary vocabulary){
         Learning learning = new Learning();

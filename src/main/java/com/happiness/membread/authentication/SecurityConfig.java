@@ -28,7 +28,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth)->
                 auth
                         .requestMatchers(nonRequiredTokenMethod).permitAll()
-                        .requestMatchers(HttpMethod.GET,"api/v1/**").permitAll()
+                        .requestMatchers("api/admin").hasRole("admin")
+                        .requestMatchers("api/v1/**").hasRole("user")
                         .anyRequest().authenticated()
                 );
 

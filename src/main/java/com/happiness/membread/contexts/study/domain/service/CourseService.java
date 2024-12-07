@@ -1,9 +1,12 @@
 package com.happiness.membread.contexts.study.domain.service;
 
 import com.happiness.membread.contexts.study.database.entities.Category;
+import com.happiness.membread.contexts.study.database.entities.Clazz;
 import com.happiness.membread.contexts.study.database.entities.Course;
 import com.happiness.membread.contexts.study.database.repositories.CategoryRepository;
+import com.happiness.membread.contexts.study.database.repositories.ClazzRepository;
 import com.happiness.membread.contexts.study.database.repositories.CourseRepository;
+import com.happiness.membread.contexts.study.domain.dtos.CourseInfoResponse;
 import com.happiness.membread.contexts.study.domain.dtos.CreateCourseRequestDto;
 import javassist.NotFoundException;
 import lombok.AccessLevel;
@@ -29,6 +32,8 @@ public class CourseService {
 
     CategoryService categoryService;
 
+    ClazzRepository clazzRepository;
+
     public Course createCourse(CreateCourseRequestDto request){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userId = authentication.getName();
@@ -41,15 +46,26 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public Course getCourseInfo(String id) {
-        Optional<Course> course = courseRepository.findById(id);
-        if (course.isEmpty()){
+    public Object getCourseInfo(String id) {
+        Optional<Course> optionalCourse = courseRepository.findById(id);
+        if (optionalCourse.isEmpty()){
             throw new RuntimeException("Not found !");
         }
         Set<Category> categories = categoryService.getCategoriesOfCourse(id);
 
-        course.get().setCategories(categories);
-        return course.get();
+        Course course = optionalCourse.get();
+
+        List<Clazz> clazzes = clazzRepository.findByCourseId(id);
+
+        CourseInfoResponse courseInfoResponse = new CourseInfoResponse();
+        courseInfoResponse.setId(course.getId());
+        courseInfoResponse.setCategories(List.copyOf(categories));
+        courseInfoResponse.setDescription(course.getDescription());
+        courseInfoResponse.setTitle(course.getTitle());
+        courseInfoResponse.setAuthorId(courseInfoResponse.getAuthorId());
+        courseInfoResponse.setClasses(clazzes);
+
+        return courseInfoResponse;
     }
 
     public Object updateCourseInfo(){
@@ -84,6 +100,10 @@ public class CourseService {
 
     public Object getCourseByCategory(Integer categoryId){
         return courseRepository.findCourseWithCategories(categoryId);
+    }
+
+    public Object getCourseByAuthor(String authorId){
+        return courseRepository.findByAuthorId(authorId);
     }
 
 }

@@ -9,6 +9,8 @@ import jakarta.websocket.server.PathParam;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +22,9 @@ public class LearningController {
 
     @GetMapping("/lesson")
     public ApiResponse<LessonProgress> getLessonProgress(@PathParam("id") String id){
-        return ApiResponse.<LessonProgress>builder().result(learningService.getLessonProgress(id,"1111")).build();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
+        return ApiResponse.<LessonProgress>builder().result(learningService.getLessonProgress(id,userId)).build();
     }
 
     @GetMapping("/clazz")
@@ -30,14 +34,17 @@ public class LearningController {
 
     @PostMapping("/update-progress")
     public ApiResponse<String> updateProgress(@RequestBody UpdateLessonProgressRequestDto progressRequestDto){
-        learningService.updateLessonProgress("1111",progressRequestDto);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
+        learningService.updateLessonProgress(userId,progressRequestDto);
 
         return ApiResponse.<String>builder().result("Updated successfully!").build();
     }
 
     @GetMapping("/study")
     public ApiResponse<LearningLesson> studyLesson(@PathParam("lessonId") String lessonId,@PathParam("method") String method){
-        String userId = "1111";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
         return ApiResponse.<LearningLesson>builder().result(learningService.studyLesson(lessonId,userId,method)).build();
     }
 }

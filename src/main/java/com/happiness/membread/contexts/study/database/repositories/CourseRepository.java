@@ -16,4 +16,8 @@ public interface CourseRepository extends JpaRepository<Course,String> {
 
     @Query(value = "SELECT c1.* FROM course c1 JOIN course_category c2 ON c2.course_id = c1.id WHERE c2.category_id = :id",nativeQuery = true)
     List<Course> findCourseWithCategories(@Param("id") Integer id);
+
+    List<Course> findByTitle(String title);
+
+    List<Course> findByAuthorId(String authorId);
 }

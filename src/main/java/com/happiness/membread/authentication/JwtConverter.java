@@ -27,6 +27,8 @@ public class JwtConverter implements Converter<Jwt, AbstractAuthenticationToken>
                 getGrantedAuthorities(jwt).stream()
         ).collect(Collectors.toSet());
 
+        System.out.println(authorities);
+
         return new JwtAuthenticationToken(jwt,authorities,jwt.getClaim("sub"));
     }
 
