@@ -1,6 +1,7 @@
 package com.happiness.membread.contexts.user.application;
 
 import com.happiness.membread.common.ApiResponse;
+import com.happiness.membread.contexts.user.database.entities.User;
 import com.happiness.membread.contexts.user.domain.aggregates.info.UserInfo;
 import com.happiness.membread.contexts.user.domain.service.UserService;
 import lombok.AccessLevel;
@@ -9,6 +10,8 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -31,6 +34,11 @@ public class UserController {
         String userId = authentication.getName();
 
         return ApiResponse.<UserInfo>builder().result(userService.updateUserInfo(userId,userInfo)).build();
+    }
+
+    @GetMapping("")
+    public ApiResponse<List<User>> getUserByEmail(@RequestBody String email){
+        return ApiResponse.<List<User>>builder().result(userService.getUserByEmail(email)).build();
     }
 
 

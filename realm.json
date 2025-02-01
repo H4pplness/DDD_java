@@ -1,0 +1,21 @@
+{
+    "id": "membread-realm",
+    "realm": "Membread",
+    "enabled": true,
+    "registrationAllowed" : true,
+    "registrationEmailAsUsername" : true,
+    "clients": [
+      {
+        "clientId": "membread-client",
+        "secret": "your-client-secret",
+        "enabled": true,
+        "publicClient": false,
+        "directAccessGrantsEnabled": true,
+        "standardFlowEnabled": true,
+        "serviceAccountsEnabled": true,
+        "authorizationServicesEnabled": true,
+        "redirectUris": ["http://localhost:8080/*"],
+        "webOrigins": ["+"]
+      }
+    ]
+  }

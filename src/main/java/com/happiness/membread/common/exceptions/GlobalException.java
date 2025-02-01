@@ -16,8 +16,8 @@ public class GlobalException {
         return ResponseEntity.badRequest()
                 .body(ApiResponse
                         .builder()
-                        .code(ErrorCode.UNKNOWNERROR.code)
-                        .message(ErrorCode.UNKNOWNERROR.message)
+                        .code(ErrorCode.UNKNOWN_ERROR.code)
+                        .message(ErrorCode.UNKNOWN_ERROR.message)
                         .build());
     }
 
@@ -41,5 +41,14 @@ public class GlobalException {
                         .build());
     }
 
-
+    @ExceptionHandler(value = AppException.class)
+    ResponseEntity<ApiResponse> handleAppException(AppException e){
+        return ResponseEntity.status(e.getErrorCode().statusCode)
+                .body(ApiResponse
+                        .builder()
+                        .code(e.getErrorCode().code)
+                        .message(e.getErrorCode().message)
+                        .build()
+                );
+    }
 }

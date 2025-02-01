@@ -43,7 +43,7 @@ public class LessonFactory {
     }
 
     private ILessonFactory getStrategy(String id){
-        com.happiness.membread.contexts.study.database.entities.Lesson lesson = lessonRepository.getReferenceById(id);
+        com.happiness.membread.contexts.study.database.entities.Lesson lesson = lessonRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Value not found"));
 
         String type = lesson.getType();
         String strategy = switch (type) {

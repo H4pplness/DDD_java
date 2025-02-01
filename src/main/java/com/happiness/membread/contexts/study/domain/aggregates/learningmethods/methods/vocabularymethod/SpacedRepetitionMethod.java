@@ -1,5 +1,7 @@
 package com.happiness.membread.contexts.study.domain.aggregates.learningmethods.methods.vocabularymethod;
 
+import com.happiness.membread.common.exceptions.AppException;
+import com.happiness.membread.common.exceptions.ErrorCode;
 import com.happiness.membread.contexts.study.domain.aggregates.learningmethods.ILearningMethod;
 import com.happiness.membread.contexts.study.domain.aggregates.learnings.vocabulary.Vocabulary;
 import com.happiness.membread.contexts.study.domain.aggregates.lessons.Lesson;
@@ -34,10 +36,12 @@ public class SpacedRepetitionMethod implements ILearningMethod {
     public VocabularyLearningLesson learn(String lessonId, String userId) {
         Lesson gotLesson = lessonFactory.getLesson(lessonId);
         if (!(gotLesson instanceof VocabularyLesson lesson)){
-            throw new IllegalArgumentException("Invalid method !");
+            throw new AppException(ErrorCode.METHOD_INVALID);
         }
 
         LessonProgress lessonProgress = lessonProgressService.getProgress(userId,lessonId);
+
+        if (lessonProgress.getUserProgress().size() < 4)throw new AppException(ErrorCode.METHOD_INVALID);
 
         HashMap<String,VocabularyLearningProgress> map = new HashMap<>();
         for (Vocabulary vocabulary : lesson.getListVocabulary()){

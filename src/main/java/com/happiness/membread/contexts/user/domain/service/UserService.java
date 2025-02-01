@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -34,14 +35,18 @@ public class UserService {
             user.setEmail((String)attributes.get("email"));
             userRepository.save(user);
 
-            return new UserInfo(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail());
+            return new UserInfo(user.getId(),user.getEmail(),user.getFirstName(),user.getLastName());
         }
         User user = userOptional.get();
-        return new UserInfo(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail());
+        return new UserInfo(user.getId(),user.getEmail(),user.getFirstName(),user.getLastName());
     }
 
     public UserInfo updateUserInfo(String id,UserInfo userInfo){
-        User user = userRepository.getReferenceById(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentId = authentication.getName();
+        if (!id.equals(currentId)) throw new RuntimeException("");
+
+        User user = userRepository.findById(id).get();
         if(user.getFirstName() != null) user.setFirstName(user.getFirstName());
         if(user.getLastName() != null) user.setLastName(user.getLastName());
         if(user.getEmail()!=null) user.setEmail(user.getEmail());
@@ -49,5 +54,9 @@ public class UserService {
         userRepository.save(user);
 
         return userInfo;
+    }
+
+    public List<User> getUserByEmail(String email){
+        return userRepository.getUserByEmail(email);
     }
 }

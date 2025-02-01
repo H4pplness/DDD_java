@@ -89,7 +89,6 @@ public class CourseService {
         for(int categoryId : categories){
             Category category = categoryService.getCategory(categoryId);
             categorySet.add(category);
-            System.out.println("CATEGORY : "+category);
         }
 
         course.setCategories(categorySet);
