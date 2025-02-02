@@ -54,7 +54,6 @@ public class LessonFactory {
         };
 
         System.out.println("Strategy : "+strategy);
-        System.out.println(map);
 
         ILessonFactory factory = map.get(strategy);
         if (factory == null)throw new IllegalArgumentException("Invalid lesson !");

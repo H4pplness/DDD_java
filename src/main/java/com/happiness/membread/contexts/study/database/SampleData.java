@@ -90,16 +90,19 @@ public class SampleData {
             for (int i=0;i<5;i++){
                 Learning learning = new Learning();
                 learning.setType("vocabulary");
+                learning.setLessonId(lesson.getId());
                 learningRepository.save(learning);
                 learnings.add(learning);
 
                 LearningAttribute word= new LearningAttribute();
                 word.setAttribute("vocabulary");
                 word.setValue(vocabulary[i]);
+                word.setLearningId(learning.getId());
 
                 LearningAttribute mean = new LearningAttribute();
                 mean.setAttribute("meaning");
                 mean.setValue(meaning[i]);
+                mean.setLearningId(learning.getId());
 
                 learningAttributeRepository.saveAll(List.of(word,mean));
             }
