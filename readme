@@ -5,4 +5,4 @@ docker build -t keycloak-membread .
 // run 
 docker run -d -p 8080:8080 keycloak-membread 
 
-Then run project, add -data flag to create model in database
+Then run project, add -data.sample=true flag to create model in database
