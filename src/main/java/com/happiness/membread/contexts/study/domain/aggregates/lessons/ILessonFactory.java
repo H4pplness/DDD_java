@@ -4,6 +4,9 @@ import com.happiness.membread.contexts.study.domain.aggregates.learnings.Learnin
 
 import java.util.List;
 
+/**
+ * to provide an interface to operate for specific lessons (edit,get)
+ */
 public interface ILessonFactory<T extends Learning,E extends Lesson> {
     /**
      * @param lessonId

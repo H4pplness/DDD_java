@@ -1,0 +1,20 @@
+services:
+  postgres-1:
+    image: postgres:16
+    container_name: postgres-1
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: membread
+    volumes:
+      - ./data/postgres-1:/var/lib/postgresql/data
+
+  auth:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: auth
+    ports:
+      - "8080:8080"

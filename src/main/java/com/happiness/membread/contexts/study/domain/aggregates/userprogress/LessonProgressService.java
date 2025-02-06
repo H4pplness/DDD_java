@@ -26,7 +26,7 @@ public class LessonProgressService implements ILessonProgress{
     @Override
     public LessonProgress getProgress(String userId, String lessonId) {
         List<GetLessonProgressProjection> userProgress = learningProgressRepository.getLessonProgress(lessonId,userId);
-
+        System.out.println(userProgress.size());
         List<UserLearningProgress> listProgress = userProgress.stream().map(e->{
             UserLearningProgress progress = new UserLearningProgress();
             progress.setProgress(e.getProgress());

@@ -12,11 +12,11 @@ public interface LearningProgressRepository extends JpaRepository<LearningProgre
     @Query(
             value = """
             SELECT 
-                learning.id AS learning_id, 
-                lesson.id AS lesson_id, 
-                learning_progress.user_id AS user_id, 
-                learning_progress.progress, 
-                learning_progress.last_time 
+                learning.id AS learningId, 
+                lesson.id AS lessonId, 
+                learning_progress.user_id AS userId, 
+                learning_progress.progress AS progress, 
+                learning_progress.last_time AS lastTime
             FROM learning 
             JOIN lesson ON lesson.id = learning.lesson_id 
             JOIN learning_progress ON learning_progress.learning_id = learning.id 

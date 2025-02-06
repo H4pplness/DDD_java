@@ -23,7 +23,6 @@ public class LessonFactory {
         this.lessonRepository = lessonRepository;
         for (ILessonFactory factory : factories){
             map.put(factory.getClass().getSimpleName(),factory);
-            System.out.println("PUT : "+factory.getClass().getName());
         }
     }
 

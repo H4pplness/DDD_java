@@ -13,6 +13,7 @@ import com.happiness.membread.contexts.study.domain.aggregates.lessons.ILessonFa
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class VocabularyLessonFactory implements ILessonFactory<Vocabulary,VocabularyLesson> {
     LearningAttributeRepository learningAttributeRepository;
@@ -50,6 +52,7 @@ public class VocabularyLessonFactory implements ILessonFactory<Vocabulary,Vocabu
 
     @Override
     public VocabularyLesson getLesson(String id) {
+
         VocabularyLesson vocabularyLesson = new VocabularyLesson();
         List<Vocabulary> listVocabulary = new ArrayList<>();
 
@@ -65,7 +68,6 @@ public class VocabularyLessonFactory implements ILessonFactory<Vocabulary,Vocabu
             vocabulary.setId(learning.getId());
             listVocabulary.add(vocabulary);
         }
-
         vocabularyLesson.setListVocabulary(listVocabulary);
 
         return vocabularyLesson;

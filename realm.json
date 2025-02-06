@@ -17,5 +17,35 @@
         "redirectUris": ["http://localhost:8080/*"],
         "webOrigins": ["+"]
       }
+    ],
+    "roles": {
+      "client":{
+        "membread-client": [
+          {
+            "name": "admin"
+          },
+          {
+            "name": "user"
+          }
+        ]
+      }
+    },
+    "users": [
+      {
+        "username": "usertest",
+        "enabled": true,
+        "email" : "usertest@mail.com",
+        "firstName": "User",
+        "lastName": "Test",
+        "credentials": [
+          {
+            "type": "password",
+            "value": "123456"
+          }
+        ],
+        "clientRoles": {
+          "membread-client": ["user"]
+        }
+      }
     ]
   }

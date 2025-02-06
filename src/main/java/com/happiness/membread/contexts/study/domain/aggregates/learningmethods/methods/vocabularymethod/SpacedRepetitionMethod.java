@@ -35,11 +35,15 @@ public class SpacedRepetitionMethod implements ILearningMethod {
     @Override
     public VocabularyLearningLesson learn(String lessonId, String userId) {
         Lesson gotLesson = lessonFactory.getLesson(lessonId);
+        System.out.println(gotLesson.getId());
+        System.out.println(gotLesson.getTitle());
         if (!(gotLesson instanceof VocabularyLesson lesson)){
             throw new AppException(ErrorCode.METHOD_INVALID);
         }
 
         LessonProgress lessonProgress = lessonProgressService.getProgress(userId,lessonId);
+
+        System.out.println(lessonProgress.getUserProgress());
 
         if (lessonProgress.getUserProgress().size() < 4)throw new AppException(ErrorCode.METHOD_INVALID);
 

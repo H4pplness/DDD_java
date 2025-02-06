@@ -9,12 +9,14 @@ import lombok.Getter;
 public enum LearningMethodType {
     VOCABULARY_SPACED_REPETITION("VOCABULARY_1", SpacedRepetitionMethod.class.getSimpleName()),
     VOCABULARY_MATCHING_GAMIFICATION("VOCABULARY_2", MatchingVocabularyGamificationMethod.class.getSimpleName()),
+    VOCABULARY_SPEED_REVIEW("VOCABULARY_3","SpeedReviewMethod"),
 
+    QUESTION_REVIEW("QUESTION_1", QuestionMethod.class.getSimpleName()),
 
+    VIDEO_PROGRESS("VIDEO_1","VideoMethod"),
 
-    QUESTION_REVIEW("QUESTION_1", QuestionMethod.class.getSimpleName())
-
-
+    CODING_COMPETITION("COMPETITION_1","CodingCompetitionMethod"),
+    WRITING_COMPETITION("COMPETITION_2","WritingCompetitionMethod")
 
     ;
     private final String id;
